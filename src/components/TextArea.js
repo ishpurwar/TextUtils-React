@@ -19,9 +19,7 @@ export default function TextArea(props) {
 
 
     const handleCopy=()=>{
-        let text=document.getElementById("mybox");
-        text.select();//select the text 
-        navigator.clipboard.writeText(text.value); //copy into the clipboard using navigator 
+        navigator.clipboard.writeText(Text); //copy into the clipboard using navigator 
         props.showAlert("Copy to the the clipboard baby","success");
     }
 
@@ -52,7 +50,7 @@ export default function TextArea(props) {
         </div>
         <div className="container my-3" style={{color:props.mode.backgroundColor==='white'?'black':'#FFC745'}}>
             <h2>Your Text Summary</h2>
-            <p style={{color:props.mode.backgroundColor==='white'?'black':'white'}}>{Text.split(" ").filter((element)=>{return element.length!==0}).length} words and {Text.length} characters</p>
+            <p style={{color:props.mode.backgroundColor==='white'?'black':'white'}}>{Text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {Text.length} characters</p>
             <p style={{color:props.mode.backgroundColor==='white'?'black':'white'}}>{0.008* Text.split(" ").length} Minutes required to read it.</p>
             <h3>Preview</h3>
             <p style={{color:props.mode.backgroundColor==='white'?'black':'white'}}>{Text.length>0?Text:"Nothing to Preview"}</p>
